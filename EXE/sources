@@ -1,0 +1,40 @@
+#
+# User Mode Application SOURCES build file
+#
+TARGETNAME=Q_test
+TARGETTYPE=PROGRAM
+#TARGETPATH=obj
+
+TARGETLIBS= $(SDK_LIB_PATH)\setupapi.lib \
+            $(SDK_LIB_PATH)\advapi32.lib \
+            $(DDK_LIB_PATH)\shell32.lib
+
+# Use multi-threaded run-time libraries in DLL
+#USE_MSVCRT=1
+# Use multi-threaded run-time libraries STATIC linked
+USE_LIBCMT=1
+
+# Building a "console" application
+UMTYPE=console
+UMENTRY=main
+UMBASE=0x400000
+
+# The target version is set by the WDK environment.
+# _NT_TARGET_VERSION= $(_NT_TARGET_VERSION_WINXP)
+
+# Set the compiler warning level
+MSC_WARNING_LEVEL=/W3 /WX
+
+# Set 1 for Unicode
+!IF 1
+C_DEFINES = -DUNICODE -D_UNICODE
+!ELSE
+!ENDIF
+
+# Include path
+INCLUDES= ..\sys
+
+# Files to compile
+SOURCES= q_test.c \
+         q_test.rc
+
