@@ -9,4 +9,8 @@ The diagram below depicts the RTS enable during UART data transmission on the RS
 
 ![image](https://user-images.githubusercontent.com/16089554/156234873-a982bdc0-ce50-4eb6-9ef3-6cf5db8eb4ce.png)
 
+## RS-232 to RS-485 Protocol Converter
+The driver is designed to use a RS-232 to RS-485 protocol converter such as the one shown below. 
+
+![RS232toRS485-DB9](https://user-images.githubusercontent.com/16089554/156939157-3182213c-da1c-4242-a00f-3ac0fcb0e8ab.png)
 
