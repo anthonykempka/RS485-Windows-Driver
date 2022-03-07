@@ -1,5 +1,7 @@
 # RS485-Windows-Driver
-RS-485 device driver source code and signed driver for Microsoft Windows operating systems. The driver uses the common 8250/16650 UART interface. 
+This repositor contains custom RS-485 device driver source code and signed driver for Microsoft Windows operating systems. The driver uses the common IBM PC 8250/16650 UART interface which is still found in many PC computers.
+
+The provenance of this device driver harkens back to the late 1990's when I co-founded Device Drivers International. Originally written for Windows NT, this driver has been upated several times for Windows 2000, Windows XP and Server 2003, Windows 7+ and finally when it was converted to use Visual Studio 2019.
 
 
 ## RTS Control
