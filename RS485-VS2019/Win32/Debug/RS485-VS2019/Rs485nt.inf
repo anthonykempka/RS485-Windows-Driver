@@ -1,0 +1,67 @@
+;
+; This is a "primitive driver" https://docs.microsoft.com/en-us/windows-hardware/drivers/develop/creating-a-primitive-driver#converting-from-a-device-driver-inf
+; also see: https://docs.microsoft.com/en-us/windows-hardware/drivers/develop/creating-a-primitive-driver
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider=%ManufacturerName%
+DriverVer = 03/16/2022,11.58.18.805
+CatalogFile=Rs485nt.cat
+PnpLockDown=1
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+%DriverName%.sys = 1,,
+
+
+[DefaultInstall.NTamd64]
+CopyFiles = MyCopyFiles_64
+AddReg = MyAddReg
+
+[DefaultInstall.NTamd64.Services]
+AddService = %ServiceName%,, MyService_Install
+
+[DefaultInstall.NTx86]
+CopyFiles = MyCopyFiles_x86
+AddReg = MyAddReg
+
+[DefaultInstall.NTx86.Services]
+AddService = %ServiceName%,, MyService_Install
+
+[MyAddReg]
+HKR,,"DebugFlags",0x00010001 ,0x0
+
+[MyService_Install]
+DisplayName      = %ServiceName%
+Description      = %ServiceDescription%
+ServiceBinary    = %12%\%DriverName%.sys        ;%windir%\system32\drivers\
+ServiceType      = 1                            ;1=SERVICE_KERNEL_DRIVER
+StartType        = 1                            ;1=SERVICE_SYSTEM_START,3=SERVICE_DEMAND_START
+ErrorControl     = 1                            ;1=SERVICE_ERROR_NORMAL
+
+[DefaultUninstall.NTamd64]
+LegacyUninstall=1
+
+[MyCopyFiles_x86]
+%DriverName%.sys
+
+[MyCopyFiles_64]
+%DriverName%.sys
+
+[Standard.NTx86]
+
+[Strings]
+ManufacturerName		= "Anthony A. Kempka" 
+ClassName				= ""
+DiskName				= "Rs485nt Source Disk"
+ServiceDescription      = "Rs485nt Device Driver"
+ServiceName             = "Rs485nt"
+DriverName              = "Rs485nt"
